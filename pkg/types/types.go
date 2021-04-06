@@ -1,46 +1,20 @@
-package types
-
-
-//Money представляет собой денежную сумму в минимальных единицах (центы, копейки, дирами и т.д.)
-type Money int64
-
-//Category представялет собой категорию, в которой был совершён платёж(авто, аптеки, рестораны и т.д.).
-type Category string
-//Payment представляет информации о платеже.
-type Payment struct{
+package types 
+// Money представляет собой денеэную сумму в минималных единиц (центы, копейки, дирамы и т.д)
+type Money int64 
+// Category представляет собой категорию, в которию был совершен платёж (авто, аптека, рестараны и т.д).
+type Category string 
+// Status представляет статуч плятежей.
+type Status string 
+// Предопределеные статусы платежа.
+const (
+	StatusOk Status = "OK"
+	StatusFail Status = "FAIL"
+	StatusProgress Status = "INPROGRESS"
+	   ) 
+// Payment представляет игформацию о платиже.
+type Payment struct {
 	ID int
 	Amount Money
 	Category Category
-}
-
-//Currency представляет код валюты
-type Currency string
-
-//коды валют
-const(
-	TJS Currency = "TJS"
-	RUB Currency = "RUB"
-	USD Currency = "USD"
-	EUR Currency = "EUR"
-
-)
-//PAN представляет номер карты
-type PAN string
-
-//Card представляет  информацию о платёжном карте
-type Card struct {
-	ID       int
-	PAN      PAN
-	Balance  Money
-	MinBalance Money
-	Currency Currency
-	Color    string
-	Name     string
-	Active   bool
-}
-type PaymentSource struct{
-	Type string
-	Number  PAN
-	Balance  Money
-}
-
+	Status Status
+	}
